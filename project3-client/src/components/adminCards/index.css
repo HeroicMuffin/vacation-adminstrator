@@ -1,0 +1,18 @@
+.cardImage {
+  width: 325px;
+  height: 225px;
+}
+.textArea {
+  overflow-y: scroll;
+  height: 135px;
+}
+.dateText {
+  font-size: 14px;
+}
+.priceText {
+  color: green;
+  text-align: end;
+}
+.dateBoxAdmin {
+  padding-left: 65px;
+}

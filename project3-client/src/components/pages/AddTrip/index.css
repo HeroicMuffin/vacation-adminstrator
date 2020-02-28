@@ -1,0 +1,18 @@
+.addTripForm {
+  display: flex;
+  flex-direction: row;
+}
+
+.addFormRight {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.addFormLeft {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.addTripHeader {
+  text-align: center;
+}

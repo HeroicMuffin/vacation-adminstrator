@@ -1,0 +1,19 @@
+.cardImage {
+  width: 325px;
+  height: 225px;
+}
+.textArea {
+  overflow-y: scroll;
+  height: 135px;
+}
+.priceText {
+  color: green;
+  text-align: end;
+  font-size: 18px
+}
+.dateBoxUser {
+  padding-left: 50px;
+}
+.followers {
+  text-align: end;
+}
