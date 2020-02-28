@@ -1,20 +1,18 @@
-# base linux composite distro
-FROM node:alpine
+# Start from node base image
+FROM  node 
 
-# absulote path to conatiner
-# WORKDIR /usr/webapp
-
-# first copy only package.json
-# if content been changed only then run npm i
-# COPY ./package.json ./
-
-RUN cd project-client
-RUN npm install
-RUN cd ..
-RUN cd project-server
-RUN npm install
-
-#copy all files from current directory to workdir path 
+# All subsequent commands will now be run from inside this folder
+RUN mkdir -p /api
+WORKDIR /api
+# Copy all the code in the local directory into the container’s working directory
 COPY ./ ./
 
-CMD ["npm","start"]
+# Install dependencies (Make sure to add node_modules to your .dockerignore 
+# in case you accidentally install locally.)
+RUN npm install
+# If you are building your code for production
+# RUN npm install --only=production
+
+CMD [ "npm", "start" ]
+
+EXPOSE 3001
