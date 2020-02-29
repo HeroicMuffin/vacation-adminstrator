@@ -1,4 +1,5 @@
 require("dotenv").config();
+const logger = require('express-simple-logger')
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -12,6 +13,7 @@ const path = require('path')
 
 
 
+
 const root = path.resolve(
   __dirname,
   '..',
@@ -21,6 +23,8 @@ const root = path.resolve(
 
 
 app.use(cors());
+app.use(logger())
+
 app.use(bodyParser.json());
 
 
