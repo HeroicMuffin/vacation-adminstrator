@@ -15,4 +15,5 @@ RUN npm install
 #copy all files from current directory to workdir path 
 COPY ./ ./
 
+#CMD ["/bin/bash" ,"./wait-for-it.sh", "ppshein-mysql:3306","-- npm run docker"]
 CMD ["npm","start"]

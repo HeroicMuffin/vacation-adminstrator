@@ -1,6 +1,5 @@
 #!/bin/bash
-cd project3-server
-npm install
+./wait-for-it.sh ppshein-mysql:3306 -- npm run docker
 npm start
 
 

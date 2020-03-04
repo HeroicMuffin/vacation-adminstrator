@@ -1,14 +1,35 @@
-version: '3'
+version: "3.7"
+
 services:
-  app:
-    build: ./project3-server
+  mysql-db:
+    image: mysql/mysql-server:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlpw
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mysqlpw
+      MYSQL_DATABASE: vacations_schema
+    volumes:
+      - "./:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    networks:
+      - boilerplate-network
+
+  node-app:
+    build:
+      context: ./project3-server
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-db
     ports:
       - "3200:3200"
-    depends_on:
-     - db
-    environment:
-     - DATABASE_HOST=db
-    volumes:
-     - ./project3-server:/project3-server
-  db:
-    build: ./DB
+    expose:
+      - "3200"
+    networks:
+      - boilerplate-network
+networks:
+  boilerplate-network:
+    driver: bridge

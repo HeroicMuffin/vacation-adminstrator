@@ -16,8 +16,6 @@ const path = require('path')
 
 const root = path.resolve(
   __dirname,
-  '..',
-  "project3-client",
   'build'
 )
 
@@ -27,12 +25,12 @@ app.use(logger())
 
 app.use(bodyParser.json());
 
+app.use(express.static(root));
 
 app.use("/", routing);
 app.use("/", vacationDB);
 app.use("/admin", administrator);
 
-app.use(express.static(root));
 
 app.get('/*', (req, res) => {
   res.sendFile('index.html', { root })
