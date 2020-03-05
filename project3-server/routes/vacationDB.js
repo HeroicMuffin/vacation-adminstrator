@@ -14,10 +14,10 @@ async function initSql() {
     });
 }
 
-//
-// initSql().then(r => {
-//     "DB : finish init. "
-// })
+
+initSql().then(r => {
+    "DB : finish init. "
+})
 
 function getVacationCountData() {
     return `select vacation_id ,count(*) as cnt from vacations_schema.id_vacations_follow
