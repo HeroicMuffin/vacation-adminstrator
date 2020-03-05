@@ -37,5 +37,5 @@ app.get('/*', (req, res) => {
 })
 
 app.listen(3200, () => {
-  console.log("listening  to: " + process.env.PORT);
+  console.log("listening  to: " + 3200);
 });

@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const apiURL = "http://localhost:3200";
 const tokenHandler = axios.create({
-  baseURL: `${apiURL}`
+  baseURL: `/`
 });
 
 tokenHandler.interceptors.request.use(config => {

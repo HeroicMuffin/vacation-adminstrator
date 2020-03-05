@@ -3,7 +3,7 @@ import axios from "axios";
 import myHook from "../../myHookers/customHook";
 import "./index.css";
 
-const registerUrl = "http://localhost:3200/register";
+const registerUrl = "/register";
 
 export default function Register(props) {
   const initState = { firstName: "", lastName: "", email: "", password: "" };
