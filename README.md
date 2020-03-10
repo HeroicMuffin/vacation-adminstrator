@@ -1,2 +1,2 @@
-# JB-Vecation-Project
-# JB-Vecation-Project
+# JB-Vacation-Project
+# JB-Vacation-Project
