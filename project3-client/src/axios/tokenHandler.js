@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const tokenHandler = axios.create({
-  baseURL: `http://localhost:3200`
-});
+const tokenHandler = axios.create();
 
 tokenHandler.interceptors.request.use(config => {
   const token = localStorage.getItem("token");

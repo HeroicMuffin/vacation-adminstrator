@@ -11,11 +11,13 @@ services:
       MYSQL_PASSWORD: mysqlpw
       MYSQL_DATABASE: vacations_schema
     volumes:
-      - ./new.sql:/docker-entrypoint-initdb.d/init-1.sql
+      - ./new.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
     expose:
       - "3306"
+    security_opt:
+      - seccomp:unconfined
     networks:
       - boilerplate-network
 
@@ -31,14 +33,14 @@ services:
       - "3200"
     networks:
       - boilerplate-network
-  ui:
-    build:
-      context: ./project3-client
-      dockerfile: Dockerfile
-    ports:
-      - '3000:3000'
-    networks:
-      - boilerplate-network
+#  ui:
+#    build:
+#      context: ./project3-client
+#      dockerfile: Dockerfile
+#    ports:
+#      - '3000:3000'
+#    networks:
+#      - boilerplate-network
 networks:
   boilerplate-network:
     driver: bridge

@@ -37,7 +37,7 @@ router.get("/GetData", async (req, res, next) => {
             acc[current.vacation_id] = current.cnt;
             return acc;
         }, {});
-
+        console.log(map)
         table.forEach(trip => {
             trip.departure = moment(trip.departure).format("MM-DD-YYYY");
             trip.returning = moment(trip.returning).format("MM-DD-YYYY");
