@@ -30,7 +30,7 @@ const AddTrip: React.FC = (props: any) => {
       alert("insert valid parameters");
     } else {
       const result = await tokenHandler.post(
-        "http://localhost:3200/admin/addtrip",
+        "/admin/addtrip",
         {
           ...data
         }

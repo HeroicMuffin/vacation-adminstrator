@@ -1,20 +1,46 @@
-# base linux composite distro
-FROM node:alpine
+version: "3"
 
-# absulote path to conatiner
-# WORKDIR /usr/webapp
+services:
+  db:
+    image:
+      mysql:8.0.19
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlpw
+      MYSQL_USER: user
+      MYSQL_PASSWORD: mysqlpw
+      MYSQL_DATABASE: vacations_schema
+    volumes:
+      - ./new.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    security_opt:
+      - seccomp:unconfined
+    networks:
+      - boilerplate-network
 
-# first copy only package.json
-# if content been changed only then run npm i
-# COPY ./package.json ./
-
-RUN cd project-client
-RUN npm install
-RUN cd ..
-RUN cd project-server
-RUN npm install
-
-#copy all files from current directory to workdir path 
-COPY ./ ./
-
-CMD ["npm","start"]
+  node-app:
+    build:
+      context: ./project3-server
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "3200:3200"
+    expose:
+      - "3200"
+    networks:
+      - boilerplate-network
+#  ui:
+#    build:
+#      context: ./project3-client
+#      dockerfile: Dockerfile
+#    ports:
+#      - '3000:3000'
+#    networks:
+#      - boilerplate-network
+networks:
+  boilerplate-network:
+    driver: bridge

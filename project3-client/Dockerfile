@@ -1,18 +1,15 @@
-# Start from node base image
-FROM  node 
+FROM node:8
+# Create app directory
+WORKDIR /usr/src/app
+# Install app dependencies
+COPY package*.json ./
 
-# All subsequent commands will now be run from inside this folder
-RUN mkdir -p /api
-WORKDIR /api
-# Copy all the code in the local directory into the container’s working directory
-COPY ./ ./
+RUN npm install --silent
+# Copy app source code
+COPY . .
 
-# Install dependencies (Make sure to add node_modules to your .dockerignore 
-# in case you accidentally install locally.)
-RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
+#Expose port and start applicationsudo apt-get remove --auto-remove grafana
 
-CMD [ "npm", "start" ]
 
-EXPOSE 3001
+EXPOSE 3000
+CMD ["npm", "start"]

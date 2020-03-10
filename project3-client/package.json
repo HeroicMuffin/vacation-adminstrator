@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts ../project3-server/build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

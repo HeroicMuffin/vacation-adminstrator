@@ -23,7 +23,7 @@ export default class VacationCard extends React.Component<any, any> {
 
   public follow = () => {
     tokenHandler
-      .get("http://localhost:3200/follow", {
+      .get("/follow", {
         params: {
           id: this.props.data.id,
           intent: !this.state.checked
