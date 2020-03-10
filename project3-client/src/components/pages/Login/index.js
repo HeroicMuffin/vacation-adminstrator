@@ -12,7 +12,7 @@ function Login(props) {
         if (data.password === null && props.isAdmin !== false) props.setIsAdmin(false)
     });
     const loginApi = async () => {
-        const result = await axios.post("/login", {...data});
+        const result = await axios.post("http://localhost:3200/login", {...data});
         const {data: response} = result;
         const {token, redirect, isAdmin, message} = response;
         if (redirect && token) {

@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  mysql-db:
+  db:
     image:
       mysql:8.0.19
     restart: always
@@ -24,11 +24,19 @@ services:
       context: ./project3-server
       dockerfile: Dockerfile
     depends_on:
-      - mysql-db
+      - db
     ports:
       - "3200:3200"
     expose:
       - "3200"
+    networks:
+      - boilerplate-network
+  ui:
+    build:
+      context: ./project3-client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
     networks:
       - boilerplate-network
 networks:

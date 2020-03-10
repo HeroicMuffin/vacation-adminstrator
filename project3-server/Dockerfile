@@ -1,8 +1,5 @@
 FROM node:latest
 
-# base linux composite distro
-FROM node:alpine
-
 # absulote path to conatiner
 WORKDIR /usr/webapp
 
@@ -15,5 +12,4 @@ RUN npm install
 #copy all files from current directory to workdir path 
 COPY ./ ./
 
-#CMD ["/bin/bash" ,"./wait-for-it.sh", "ppshein-mysql:3306","-- npm run docker"]
-CMD ["npm","start"]
+CMD ["./wait-for-it.sh", "localhost:3306", "--", "node", "index.js"]
