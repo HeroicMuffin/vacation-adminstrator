@@ -19,7 +19,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "apexcharts": "^3.15.5",
-    "axios": "^0.19.0",
+    "axios": "^0.21.2",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "date-fns": "^2.9.0",
