@@ -2,8 +2,7 @@ version: "3"
 
 services:
   db:
-    image:
-      mysql:8.0.19
+    image: mysql:8.0.19
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: mysqlpw
@@ -18,10 +17,8 @@ services:
       - "3306"
     security_opt:
       - seccomp:unconfined
-    networks:
-      - boilerplate-network
 
-  node-app:
+  node-server:
     build:
       context: ./project3-server
       dockerfile: Dockerfile
@@ -29,18 +26,10 @@ services:
       - db
     ports:
       - "3200:3200"
-    expose:
-      - "3200"
-    networks:
-      - boilerplate-network
-#  ui:
-#    build:
-#      context: ./project3-client
-#      dockerfile: Dockerfile
-#    ports:
-#      - '3000:3000'
-#    networks:
-#      - boilerplate-network
-networks:
-  boilerplate-network:
-    driver: bridge
+
+  ui:
+    build:
+      context: ./project3-client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'

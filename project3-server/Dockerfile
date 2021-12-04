@@ -11,5 +11,6 @@ RUN npm install
 
 #copy all files from current directory to workdir path 
 COPY ./ ./
+EXPOSE 3200
 
 CMD ["./wait-for-it.sh", "localhost:3306", "--", "node", "index.js"]

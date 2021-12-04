@@ -2,6 +2,7 @@
   "name": "project3-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://node-server:3200",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
